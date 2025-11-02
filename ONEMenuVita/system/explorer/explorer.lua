@@ -1170,6 +1170,11 @@ local qr_callback = function ()
 	os.delay(50)
 end
 
+local refresh_callback = function ()
+	explorer.refresh(true)
+	menu_ctx.close = true
+end
+
 local cancel_callback = function ()
 	menu_ctx.wait_action = __ACTION_WAIT_NOTHING
 	menu_ctx.wakefunct()
@@ -1309,8 +1314,9 @@ function menu_ctx.wakefunct()
 
 		{ text = STRINGS_SUBMENU_INSTALL_GAME, 	funct = installgame_callback },
 		{ text = STRINGS_SUBMENU_INSTALLCTHEME,	funct = installtheme_callback },
-        { text = STRINGS_SUBMENU_EXPORT,        funct = filesexport_callback },
+		{ text = STRINGS_SUBMENU_EXPORT,        funct = filesexport_callback },
 		{ text = STRINGS_SUBMENU_QR,            funct = qr_callback },
+		{ text = "Refresh",                      funct = refresh_callback },
 
 		{ text = STRINGS_SUBMENU_CANCEL,        funct = cancel_callback },
 
